@@ -1,5 +1,6 @@
-package com.example.sqlitedbgfg;
+package com.example.sqlitedbgfg.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,11 +13,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.sqlitedbgfg.DBHandler;
+import com.example.sqlitedbgfg.R;
+
 public class MainActivity extends AppCompatActivity {
 
     // creating variables for our edittext, button and dbhandler
     private EditText courseNameEdt, courseTracksEdt, courseDurationEdt, courseDescriptionEdt;
-    private Button addCourseBtn;
+    private Button addCourseBtn, viewMoreCourses;
     private DBHandler dbHandler;
 
     @Override
@@ -30,12 +34,14 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+
         // initializing all our variables.
         courseNameEdt = findViewById(R.id.idEdtCourseName);
         courseTracksEdt = findViewById(R.id.idEdtCourseTracks);
         courseDurationEdt = findViewById(R.id.idEdtCourseDuration);
         courseDescriptionEdt = findViewById(R.id.idEdtCourseDescription);
         addCourseBtn = findViewById(R.id.idBtnAddCourse);
+        viewMoreCourses = findViewById(R.id.idBtnReadCourse);
 
         // creating a new dbhandler class
         // and passing our context to it.
@@ -53,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 String courseDescription = courseDescriptionEdt.getText().toString();
 
                 // validating if the text fields are empty or not.
-                if (courseName.isEmpty() && courseTracks.isEmpty() && courseDuration.isEmpty() && courseDescription.isEmpty()){
+                if (courseName.isEmpty() || courseTracks.isEmpty() || courseDuration.isEmpty() || courseDescription.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Please enter all the data", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -69,6 +75,15 @@ public class MainActivity extends AppCompatActivity {
                 courseTracksEdt.setText("");
                 courseDescriptionEdt.setText("");
 
+            }
+        });
+
+        // Go to ViewCourses Activity
+        viewMoreCourses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ViewCoursesActivity.class);
+                startActivity(intent);
             }
         });
 

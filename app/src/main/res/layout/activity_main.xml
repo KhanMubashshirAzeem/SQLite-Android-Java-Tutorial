@@ -9,7 +9,7 @@
     android:layout_margin="16sp"
     android:padding="8dp"
     android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
 
     <!--Edit text to enter course name-->

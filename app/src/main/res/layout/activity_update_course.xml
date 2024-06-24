@@ -6,21 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16sp"
+    android:background="@color/bg_color"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context=".Activity.MainActivity">
-
+    tools:context=".Activity.UpdateCourseActivity">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/textInputLayoutCourseName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:boxStrokeColor="@color/colorPrimary"
         app:boxStrokeWidth="2dp"
-        app:endIconMode="clear_text"
-        app:hintTextColor="@color/black"
         app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -31,17 +29,16 @@
             android:inputType="text"
             android:padding="10dp"
             android:textColor="@color/black"
-            />
+            android:textColorHint="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutDuration"
+        android:id="@+id/textInputLayoutCourseDuration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:boxStrokeColor="@color/colorPrimary"
         app:boxStrokeWidth="2dp"
-        app:hintTextColor="@color/black"
         app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -52,17 +49,16 @@
             android:inputType="text"
             android:padding="10dp"
             android:textColor="@color/black"
-            />
+            android:textColorHint="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutTracks"
+        android:id="@+id/textInputLayoutCourseTracks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:boxStrokeColor="@color/colorPrimary"
         app:boxStrokeWidth="2dp"
-        app:hintTextColor="@color/black"
         app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -73,17 +69,16 @@
             android:inputType="text"
             android:padding="10dp"
             android:textColor="@color/black"
-            />
+            android:textColorHint="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutDescription"
+        android:id="@+id/textInputLayoutCourseDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:boxStrokeColor="@color/colorPrimary"
         app:boxStrokeWidth="2dp"
-        app:hintTextColor="@color/black"
         app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -94,24 +89,28 @@
             android:inputType="text"
             android:padding="10dp"
             android:textColor="@color/black"
-            />
+            android:textColorHint="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/idBtnAddCourse"
+        android:id="@+id/idBtnUpdateCourse"
         style="@style/CustomMaterialButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Add Course"
+        android:text="Update Course"
+        android:onClick="updateCourseMethod"
         android:textAllCaps="false" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/idBtnReadCourse"
+        android:id="@+id/idBtnDelete"
         style="@style/CustomMaterialButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Read All Courses"
+        android:onClick="deleteCourseMethod"
+        android:text="Delete Course"
         android:textAllCaps="false" />
+
+
 </LinearLayout>

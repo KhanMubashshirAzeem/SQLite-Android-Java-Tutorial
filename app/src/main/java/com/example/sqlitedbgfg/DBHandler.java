@@ -96,7 +96,7 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // Read Data section
+    // ************************ Read Data section ************************************
     // we have created a new method for reading all the courses.
     public ArrayList<CourseModal> readCourses() {
 
@@ -132,6 +132,43 @@ public class DBHandler extends SQLiteOpenHelper {
         cursorCourses.close();
         return courseModalArrayList;
 
+    }
+
+
+    // ************************ Update Data section ************************************
+    public void updateCourse(String originalCourseName, String courseName, String courseDescription,
+                             String courseTracks, String courseDuration) {
+
+        // calling method to get writeable database.
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        // on below line we are passing all values.
+        // along with its key and value pair.
+        values.put(NAME_COL, courseName);
+        values.put(DURATION_COL, courseDuration);
+        values.put(DESCRIPTION_COL, courseDescription);
+        values.put(TRACKS_COL, courseTracks);
+
+        // on below line we are calling a update method to update our database and passing our values.
+        // and we are comparing it with name of our course which is stored in original name variable.
+        db.update(TABLE_NAME, values, "name=?", new String[]{originalCourseName});
+        db.close();
+    }
+
+
+    // ***************** Delete Operation *****************
+    // below is the method for deleting our course.
+    public void deleteCourse(String courseName) {
+
+        // on below line we are creating
+        // a variable to write our database.
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // on below line we are calling a method to delete our
+        // course and we are comparing it with our course name.
+        db.delete(TABLE_NAME, "name=?", new String[]{courseName});
+        db.close();
     }
 
 

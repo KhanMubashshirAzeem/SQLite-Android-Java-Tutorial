@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="16sp"
+    android:background="@color/bg_color"
     android:padding="8dp"
     tools:context=".Activity.ViewCoursesActivity">
 

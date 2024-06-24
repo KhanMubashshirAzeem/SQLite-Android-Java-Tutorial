@@ -1,6 +1,7 @@
 package com.example.sqlitedbgfg.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sqlitedbgfg.Activity.UpdateCourseActivity;
 import com.example.sqlitedbgfg.Modal.CourseModal;
 import com.example.sqlitedbgfg.R;
 
@@ -45,6 +47,26 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
         holder.courseDurationTV.setText(modal.getCourseDuration());
         holder.courseTracksTV.setText(modal.getCourseTracks());
 
+        // ***************** Update Section *******************************
+        // below line is to add on click listener for out recycler view item.
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // on below line we are calling an intent.
+                Intent i = new Intent(context, UpdateCourseActivity.class);
+
+                // below we are passing all our values.
+                i.putExtra("name", modal.getCourseName());
+                i.putExtra("description", modal.getCourseDescription());
+                i.putExtra("duration", modal.getCourseDuration());
+                i.putExtra("tracks", modal.getCourseTracks());
+
+                // starting our activity.
+                 context.startActivity(i);
+            }
+        });
+
     }
 
     @Override
@@ -67,4 +89,6 @@ public class CourseRVAdapter extends RecyclerView.Adapter<CourseRVAdapter.ViewHo
             courseTracksTV = itemView.findViewById(R.id.idTVCourseTracks);
         }
     }
+
+
 }
